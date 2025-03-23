@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante "El Buen Sabor"</title>
+    <link href="bootstrap.css" rel="stylesheet">
+    <style>
+        /* Personalización de estilos */
+        body {
+            background-color: #f8f0e3; /* Fondo beige suave */
+        }
+        header {
+            background: linear-gradient(to right, #d2691e, #a0522d);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            padding: 20px 20px; /* Reducción del padding */
+        }
+        header h1 {
+            color: #fff;
+            font-family: 'Georgia', serif;
+            font-weight: bold;
+            font-size: 2em; /* Reducción del tamaño de la fuente */
+            margin: 0;
+        }
+        nav.navbar {
+            background: linear-gradient(to right, #a0522d, #8b4513);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        nav .navbar-brand {
+            color: #fff;
+            font-weight: bold;
+            margin-right: 20px;
+            font-family: 'Georgia', serif;
+        }
+        nav .navbar-nav .nav-link {
+            color: #fff !important;
+            font-weight: bold;
+            padding: 10px 15px;
+            transition: color 0.3s ease;
+            font-family: 'Georgia', serif;
+        }
+        nav .navbar-nav .nav-link:hover,
+        nav .navbar-nav .nav-link.active {
+            color: #f5deb3 !important;
+        }
+        footer {
+            background-color: #a0522d;
+        }
+        footer p {
+            color: #fff;
+            margin: 0;
+            font-weight: bold;
+        }
+        .menu-categoria h3 {
+            color: #a0522d;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        .card-body {
+            background: linear-gradient(45deg, #fffaf0, #f8f0e3); /* Tonos beige sutiles */
+        }
+        .card-title {
+            font-size: 1.3em;
+            color: #a0522d;
+            font-weight: bold;
+        }
+        .card-text {
+            font-size: 0.95em;
+            color: #6c757d;
+        }
+        .precio {
+            font-weight: bold;
+            color: #d2691e;
+            font-size: 1.1em;
+        }
+
+        /* Estilos para el carrusel */
+        .carousel-item img {
+            width: 100%;
+            height: 400px; /* Ajusta la altura según tus necesidades */
+            object-fit: cover; /* Evita la distorsión de la imagen */
+        }
+    </style>
+</head>
+<body>
+    <header class="text-light text-center">
+        <h1>Restaurante "El Buen Sabor"</h1>
+    </header>
+
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="img/c1.webp" class="d-block w-100" alt="Imagen 1">
+            </div>
+            <div class="carousel-item">
+                <img src="img/c2.webp" class="d-block w-100" alt="Imagen 2">
+            </div>
+            <div class="carousel-item">
+                <img src="img/c3.webp" class="d-block w-100" alt="Imagen 3">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark mt-0">
+        <div class="container">
+            <a class="navbar-brand" href="#">El Buen Sabor</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Menú</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="factura.html">Factura</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-4">
+        <section id="menu">
+            <h2 class="text-center mb-4">Nuestro Menú</h2>
+            <div class="menu-categoria">
+                <h3>Entradas</h3>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <img src="img/e2.webp" class="card-img-top" alt="Croquetas caseras">
+                            <div class="card-body">
+                                <h5 class="card-title">Croquetas caseras</h5>
+                                <p class="card-text">Deliciosas croquetas de jamón y pollo.</p>
+                                <p class="precio">7,50€</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <img src="img/e1.webp" class="card-img-top" alt="Calamares a la andaluza">
+                            <div class="card-body">
+                                <h5 class="card-title">Calamares a la andaluza</h5>
+                                <p class="card-text">Calamares frescos rebozados y fritos.</p>
+                                <p class="precio">9,00€</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-categoria">
+                <h3 class="p-2">Platos Principales</h3>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <img src="img/p1.webp" class="card-img-top" alt="Paella valenciana">
+                            <div class="card-body">
+                                <h5 class="card-title">Paella valenciana</h5>
+                                <p class="card-text">Paella tradicional con pollo, conejo y verduras.</p>
+                                <p class="precio">15,00€</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <img src="img/p2.webp" class="card-img-top" alt="Solomillo a la pimienta">
+                            <div class="card-body">
+                                <h5 class="card-title">Solomillo a la pimienta</h5>
+                                <p class="card-text">Solomillo de ternera con salsa de pimienta.</p>
+                                <p class="precio">18,50€</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-categoria">
+                <h3 class="p-2">Postres</h3>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <img src="img/postre2.webp" class="card-img-top" alt="Tarta de chocolate">
+                            <div class="card-body">
+                                <h5 class="card-title">Tarta de chocolate</h5>
+                                <p class="card-text">Tarta casera de chocolate con nata.</p>
+                                <p class="precio">6,00€</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <img src="img/postre1.webp" class="card-img-top" alt="Helado">
+                            <div class="card-body">
+                                <h5 class="card-title">Helado</h5>
+                                <p class="card-text">Helado de diferentes sabores a escoger.</p>
+                                <p class="precio">4,50€</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-light text-center p-3">
+        <p>&copy; 2024 Restaurante "El Buen Sabor"</p>
+    </footer>
+
+    <script src="sweetalert2.js"></script>
+    <script src="bootstrap.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
