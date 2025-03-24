@@ -100,6 +100,10 @@ document.addEventListener('DOMContentLoaded', function() {
             existingModal.remove();
         }
 
+        const nombreCliente = document.getElementById('nombre').value;
+        const direccionCliente = document.getElementById('direccion').value;
+        const contactoCliente = document.getElementById('contacto').value;
+
         const productos = document.querySelectorAll('.producto');
         let total = 0;
         let facturaContent = '';
@@ -133,6 +137,10 @@ document.addEventListener('DOMContentLoaded', function() {
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
+                            <h5>Restaurante "El Buen Sabor"</h5>
+                            <p><strong>Cliente:</strong> ${nombreCliente}</p>
+                            <p><strong>Dirección:</strong> ${direccionCliente}</p>
+                            <p><strong>Contacto:</strong> ${contactoCliente}</p>
                             <table class="table">
                                 <thead>
                                     <tr>
