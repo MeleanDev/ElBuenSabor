@@ -164,10 +164,24 @@
                     <legend class="float-none w-auto px-2 text-primary">Productos/Servicios</legend>
                     <div id="productos-container">
                         <div class="producto d-flex align-items-center mb-3">
-                            <input type="text" class="form-control me-2" name="descripcion[]" placeholder="Descripción" required>
+                            <select class="form-control me-2 producto-select" name="producto[]" required>
+                                <option value="" disabled selected>Seleccione un producto</option>
+                                <option value="Croquetas caseras" data-precio="7.50">Croquetas caseras - 7,50€</option>
+                                <option value="Ensalada de la casa" data-precio="5.00">Ensalada de la casa - 5,00€</option>
+                                <option value="Pasta a la boloñesa" data-precio="8.00">Pasta a la boloñesa - 8,00€</option>
+                                <option value="Pizza de la casa" data-precio="10.00">Pizza de la casa - 10,00€</option>
+                                <option value="Hamburguesa de la casa" data-precio="9.00">Hamburguesa de la casa - 9,00€</option>
+                                <option value="Pollo asado" data-precio="12.00">Pollo asado - 12,00€</option>
+                                <option value="Pescado al horno" data-precio="15.00">Pescado al horno - 15,00€</option>
+                                <option value="Tarta de la casa" data-precio="6.00">Tarta de la casa - 6,00€</option>
+                                <option value="Helado de la casa" data-precio="4.50">Helado de la casa - 4,50€</option>
+                                <option value="Café solo" data-precio="2.00">Café solo - 2,00€</option>
+                            </select>
                             <input type="number" class="form-control me-2" name="cantidad[]" value="1" min="1" placeholder="Cantidad" required>
-                            <input type="number" class="form-control me-2" name="precio[]" placeholder="Precio Unitario" required>
-                            <span class="subtotal ms-2">Subtotal: 0€</span>                        </div>
+                            <input type="number" class="form-control me-2 precio" name="precio[]" placeholder="Precio Unitario" readonly required>
+                            <span class="subtotal ms-2">Subtotal: 0€</span>
+                            <button type="button" class="btn btn-danger btn-sm ms-2 eliminar-producto">Eliminar</button>
+                        </div>
                     </div>
                     <button type="button" id="agregar-producto" class="btn btn-warning">Agregar Producto</button>
                 </fieldset>
