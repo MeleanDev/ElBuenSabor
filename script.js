@@ -3,6 +3,52 @@ const agregarProductoBtn = document.getElementById('agregar-producto');
 const facturaForm = document.getElementById('factura-form');
 const totalOutput = document.getElementById('total');
 
+document.addEventListener('DOMContentLoaded', function() {
+    const productosContainer = document.getElementById('productos-container');
+    const agregarProductoBtn = document.getElementById('agregar-producto');
+
+    // Función para eliminar un producto
+    function eliminarProducto(event) {
+        if (event.target.classList.contains('eliminar-producto')) {
+            const producto = event.target.closest('.producto');
+            producto.remove();
+            actualizarTotal();
+        }
+    }
+
+    // Función para agregar un nuevo producto
+    function agregarProducto() {
+        const nuevoProducto = document.createElement('div');
+        nuevoProducto.classList.add('producto', 'd-flex', 'align-items-center', 'mb-3');
+        nuevoProducto.innerHTML = `
+            <input type="text" class="form-control me-2" name="descripcion[]" placeholder="Descripción" required>
+            <input type="number" class="form-control me-2" name="cantidad[]" value="1" min="1" placeholder="Cantidad" required>
+            <input type="number" class="form-control me-2" name="precio[]" placeholder="Precio Unitario" required>
+            <span class="subtotal ms-2">Subtotal: 0€</span>
+            <button type="button" class="btn btn-danger btn-sm ms-2 eliminar-producto">Eliminar</button>
+        `;
+        productosContainer.appendChild(nuevoProducto);
+    }
+
+    // Función para actualizar el total
+    function actualizarTotal() {
+        let total = 0;
+        const productos = document.querySelectorAll('.producto');
+        productos.forEach(producto => {
+            const cantidad = producto.querySelector('input[name="cantidad[]"]').value;
+            const precio = producto.querySelector('input[name="precio[]"]').value;
+            const subtotal = cantidad * precio;
+            producto.querySelector('.subtotal').textContent = `Subtotal: ${subtotal}€`;
+            total += subtotal;
+        });
+        document.getElementById('total').textContent = `${total}€`;
+    }
+
+    // Event listeners
+    productosContainer.addEventListener('click', eliminarProducto);
+    productosContainer.addEventListener('input', actualizarTotal);
+});
+
 agregarProductoBtn.addEventListener('click', () => {
     const productoDiv = document.createElement('div');
     productoDiv.classList.add('producto', 'd-flex', 'align-items-center', 'mb-3');
@@ -11,6 +57,7 @@ agregarProductoBtn.addEventListener('click', () => {
         <input type="number" class="form-control me-2" name="cantidad[]" value="1" min="1" placeholder="Cantidad" required>
         <input type="number" class="form-control me-2" name="precio[]" placeholder="Precio Unitario" required>
         <span class="subtotal ms-2">Subtotal: 0€</span>
+        <button type="button" class="btn btn-danger btn-sm ms-2 eliminar-producto">Eliminar</button>
     `;
     productosContainer.appendChild(productoDiv);
 });
