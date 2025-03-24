@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const producto = event.target.closest('.producto');
             producto.remove();
             actualizarTotal();
+            actualizarOpciones();
         }
     }
 
@@ -37,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <button type="button" class="btn btn-danger btn-sm ms-2 eliminar-producto">Eliminar</button>
         `;
         productosContainer.appendChild(nuevoProducto);
+        actualizarOpciones();
     }
 
     // Función para actualizar el total
@@ -61,7 +63,25 @@ document.addEventListener('DOMContentLoaded', function() {
             const precioInput = select.closest('.producto').querySelector('input[name="precio[]"]');
             precioInput.value = precio;
             actualizarTotal();
+            actualizarOpciones();
         }
+    }
+
+    // Función para actualizar las opciones de los selects
+    function actualizarOpciones() {
+        const selects = document.querySelectorAll('.producto-select');
+        const seleccionados = Array.from(selects).map(select => select.value);
+
+        selects.forEach(select => {
+            const opciones = select.querySelectorAll('option');
+            opciones.forEach(opcion => {
+                if (seleccionados.includes(opcion.value) && opcion.value !== select.value) {
+                    opcion.disabled = true;
+                } else {
+                    opcion.disabled = false;
+                }
+            });
+        });
     }
 
     // Event listeners
