@@ -94,6 +94,25 @@ document.addEventListener('DOMContentLoaded', function() {
     facturaForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
+        // Validar que al menos un producto esté seleccionado
+        const productos = document.querySelectorAll('.producto-select');
+        let productoSeleccionado = false;
+        productos.forEach(select => {
+            if (select.value) {
+                productoSeleccionado = true;
+            }
+        });
+
+        if (!productoSeleccionado) {
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "Debe seleccionar al menos un producto antes de generar la factura.",
+                showConfirmButton: true
+            });
+            return;
+        }
+
         // Eliminar el modal de la factura anterior si existe
         const existingModal = document.getElementById('facturaModal');
         if (existingModal) {
@@ -104,15 +123,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const direccionCliente = document.getElementById('direccion').value;
         const contactoCliente = document.getElementById('contacto').value;
 
-        const productos = document.querySelectorAll('.producto');
         let total = 0;
         let facturaContent = '';
         productos.forEach((producto, index) => {
-            const descripcion = producto.querySelector('.producto-select').selectedOptions[0].textContent;
-            const cantidad = parseInt(producto.querySelector('input[name="cantidad[]"]').value);
-            const precio = parseFloat(producto.querySelector('input[name="precio[]"]').value);
+            const descripcion = producto.selectedOptions[0].textContent;
+            const cantidad = parseInt(producto.closest('.producto').querySelector('input[name="cantidad[]"]').value);
+            const precio = parseFloat(producto.closest('.producto').querySelector('input[name="precio[]"]').value);
             const subtotal = cantidad * precio;
-            producto.querySelector('.subtotal').textContent = `Subtotal: ${subtotal.toFixed(2)}€`;
+            producto.closest('.producto').querySelector('.subtotal').textContent = `Subtotal: ${subtotal.toFixed(2)}€`;
             total += subtotal;
 
             facturaContent += `<tr>
